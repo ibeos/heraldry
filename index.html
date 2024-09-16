@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Heraldry</title>
+		<meta name="description" content="Learn about heraldry">
+		<link rel="icon" type="image/x-icon" href="icon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+		<link rel="stylesheet" href="styles.css">
+		<script src="https://www.w3schools.com/lib/w3.js"></script>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<!--[if lt IE 7]>
+			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+		<noscript>
+			This site requires Javascript to work properly. Please enable Javascript in the settings.
+		</noscript>
+
+		<svg class="defs-only" xmlns="http://www.w3.org/2000/svg" style="width:0; height: 0;">
+			<defs id="svg-defs">
+				<symbol id="coatofarms">
+					<path stroke="black" stroke-width="10"
+						d="M50,50 L 50,320 C 50,540 200,670 300,700 400,670 550,540 550,320 L 550,50 50,50 z"/>
+				</symbol>
+
+				<symbol id="nodiv">
+					<path stroke="black" stroke-width="10" fill="#e6e6e6"
+						d="M50,50 L 50,320 C 50,540 200,670 300,700 400,670 550,540 550,320 L 550,50 50,50 z"/>
+				</symbol>
+
+				<pattern id="battlements1" x="0" y="0" width="100" height="1" patternUnits="userSpaceOnUse">
+					<rect x="0" y="0" width="50" height="10" fill="#ffe6d5"/>
+				</pattern>
+
+				<pattern id="battlements" x="0" y="0" width="100" height="1" patternUnits="userSpaceOnUse">
+					<rect x="0" y="0" width="50" height="10" fill="#ffccaa"/>
+				</pattern>
+			</defs>	  
+		</svg>
+
+		<div class="w3-row w3-display-container" style="height: 600px; margin-top: -100px; margin-bottom: -100px; background-color: #afdde9; z-index: -2;">
+			
+			<div id="top-banner" class="w3-display-middle">
+				<div id="top-pole" class="w3-col" style="width: 2%;"></div>
+				<div class="w3-col" style="width: 20%;">
+					<svg viewBox="0 0 600 800" fill="#e6e6e6"><use xlink:href="#coatofarms"/></svg>
+				</div>
+				<div  class="w3-col" style="width: 72%; line-height: 1;">
+					<h1 id="main-heading">Heraldry</h1>
+					<h3 id="sub-heading">Language of Shields and Banners</h3>
+				</div>
+				<div id="top-flag" class="w3-col" style="width: 6%;"></div>
+			</div>
+		</div>
+
+		<div class="w3-row" style="line-height: 0;">
+			<svg viewBox="0 0 750 40" fill="url(#battlements1)">
+				<rect x="0" y="0" width="800" height="50" />
+			</svg>
+		</div>
+
+		<div class="w3-row" style="height: 50px; background-color: #ffe6d5;"></div>
+
+		<!-- Start Content -->
+		<div id="home" class="w3-content" style="max-width:1200px">
+			
+			<div id="editor" class="w3-panel">
+				<div class="w3-row" style="line-height: 0;">
+					<svg viewBox="0 0 750 40" fill="url(#battlements)">
+						<rect x="0" y="0" width="800" height="50" />
+					</svg>
+				</div>
+				<div class="w3-row shadow2" style="background-color: #ffccaa; padding: 20px 0 20px 0;">
+					<div class="w3-row w3-center" style="margin: 10px;">
+						<div class="banner shadowM">
+							<h2>Shield Editor</h2>
+						</div>
+					</div>
+					<div class="w3-container">
+						<div class="w3-row">
+							<div class="w3-container w3-third">
+								<button id="color-toggle-button" class="w3-button w3-block" onclick="toggleColor()"><b>Color</b> | Outline | Pattern</button>
+								<svg viewBox="0 0 600 800" fill="#e6e6e6"><use xlink:href="#coatofarms"/></svg>
+								<button id="download-button" class="w3-button w3-block" onclick="download('CoatOfArms.svg', 'text/plain')">Download</button>
+							</div>
+							<div id="editor-controls" class="w3-container w3-twothird scroll">
+								<div id="editor-bar">
+									<button class="w3-bar-item w3-button w3-mobile tablink selected" onclick="openTab(event,'field-tab')">Field</button>
+									<button class="w3-bar-item w3-button w3-mobile tablink" onclick="openTab(event,'division-tab')">Division</button>
+									<button class="w3-bar-item w3-button w3-mobile tablink" onclick="openTab(event,'ordinary-tab')">Ordinary</button>
+									<!-- <button class="w3-bar-item w3-button w3-mobile tablink" onclick="openTab(event,'lesser-tab')">Lesser Charges</button> -->
+									<button class="w3-bar-item w3-button w3-mobile tablink" onclick="openTab(event,'charges-tab')">Charges</button>
+								</div>
+								<div id="field-tab" class="w3-container tab">
+									<h3>Shield Shape</h3>
+									<label for="sh-standard" title="Standard">
+										<input type="radio" id="sh-standard" name="shield" class="divbutton" onclick="updateShieldType('Standard')">
+										<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#shieldStandard"/></svg>
+									</label>
+									<label for="sh-heater" title="Heater">
+										<input type="radio" id="sh-heater" name="shield" class="divbutton" onclick="updateShieldType('Heater')">
+										<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#shieldHeater"/></svg>
+									</label>
+									<label for="sh-triangle" title="Triangle">
+										<input type="radio" id="sh-triangle" name="shield" class="divbutton" onclick="updateShieldType('Triangle')">
+										<svg viewBox="0 0 600 700" width="60" height="60"><use xlink:href="#shieldTriangle"/></svg>
+									</label>
+									<label for="sh-triangle2" title="Triangle 2">
+										<input type="radio" id="sh-triangle2" name="shield" class="divbutton" onclick="updateShieldType('Triangle2')">
+										<svg viewBox="0 0 600 700" width="60" height="60"><use xlink:href="#shieldTriangle2"/></svg>
+									</label>
+									<label for="sh-triangle3" title="Triangle 3">
+										<input type="radio" id="sh-triangle3" name="shield" class="divbutton" onclick="updateShieldType('Triangle3')">
+										<svg viewBox="0 0 600 700" width="60" height="60"><use xlink:href="#shieldTriangle3"/></svg>
+									</label>
+									<label for="sh-round" title="Round">
+										<input type="radio" id="sh-round" name="shield" class="divbutton" onclick="updateShieldType('Round')">
+										<svg viewBox="0 0 600 700" width="60" height="60"><use xlink:href="#shieldRound"/></svg>
+									</label>
+									<label for="sh-oldfrench" title="Old French">
+										<input type="radio" id="sh-oldfrench" name="shield" class="divbutton" onclick="updateShieldType('OldFrench')">
+										<svg viewBox="0 0 600 700" width="60" height="60"><use xlink:href="#shieldOldFrench"/></svg>
+									</label>
+									<label for="sh-english" title="English">
+										<input type="radio" id="sh-english" name="shield" class="divbutton" onclick="updateShieldType('English')">
+										<svg viewBox="0 0 600 700" width="60" height="60"><use xlink:href="#shieldEnglish"/></svg>
+									</label>
+									<label for="sh-renaissance" title="Renaissance">
+										<input type="radio" id="sh-renaissance" name="shield" class="divbutton" onclick="updateShieldType('Renaissance')">
+										<svg viewBox="0 0 600 700" width="60" height="60"><use xlink:href="#shieldRenaissance"/></svg>
+									</label>
+									<label for="sh-oval" title="Oval">
+										<input type="radio" id="sh-oval" name="shield" class="divbutton" onclick="updateShieldType('Oval')">
+										<svg viewBox="0 0 600 800" width="60" height="60"><use xlink:href="#shieldOval"/></svg>
+									</label>
+									<label for="sh-lozenge" title="Lozenge">
+										<input type="radio" id="sh-lozenge" name="shield" class="divbutton" onclick="updateShieldType('Lozenge')">
+										<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#shieldLozenge"/></svg>
+									</label>
+									<label for="sh-square" title="Square">
+										<input type="radio" id="sh-square" name="shield" class="divbutton" onclick="updateShieldType('Square')">
+										<svg viewBox="0 0 600 600" width="60" height="60"><use xlink:href="#shieldSquare"/></svg>
+									</label>
+
+									<div id="editor-field-color">
+										<h3>Field Color</h3>
+									</div>
+								</div>
+									
+								<div id="division-tab" class="w3-container tab" style="display:none">
+									<div>
+										<h3>Division Type</h3>
+										<label for="div-none" title="None">
+											<input type="radio" id="div-none" name="division" class="divbutton" onclick="updateDivisionType('none')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#nodiv"/></svg>
+										</label>
+										<label for="div-partypale" title="Party per pale">
+											<input type="radio" id="div-partypale" name="division" class="divbutton" onclick="updateDivisionType('PartyPale')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#PartyPale"/></svg>
+										</label>
+										<label for="div-partyfess" title="Party per fess">
+											<input type="radio" id="div-partyfess" name="division" class="divbutton" onclick="updateDivisionType('PartyFess')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#PartyFess"/></svg>
+										</label>
+										<label for="div-partybend" title="Party per bend">
+											<input type="radio" id="div-partybend" name="division" class="divbutton" onclick="updateDivisionType('PartyBend')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#PartyBend"/></svg>
+										</label>
+										<label for="div-partybends" title="Party per bend sinister">
+											<input type="radio" id="div-partybends" name="division" class="divbutton" onclick="updateDivisionType('PartyBendS')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#PartyBendS"/></svg>
+										</label>
+										<label for="div-chevron" title="Party per chevron">
+											<input type="radio" id="div-chevron" name="division" class="divbutton" onclick="updateDivisionType('PartyChevron')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#PartyChevron"/></svg>
+										</label>
+										<label for="div-saltire" title="Party per saltire">
+											<input type="radio" id="div-saltire" name="division" class="divbutton" onclick="updateDivisionType('PartySaltire')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#PartySaltire"/></svg>
+										</label>
+										<label for="div-tiercedfess" title="Tierced per fess">
+											<input type="radio" id="div-tiercedfess" name="division" class="divbutton" onclick="updateDivisionType('TiercedFess')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#TiercedFess"/></svg>
+										</label>
+										<label for="div-tiercedpale" title="Tierced per pale">
+											<input type="radio" id="div-tiercedpale" name="division" class="divbutton" onclick="updateDivisionType('TiercedPale')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#TiercedPale"/></svg>
+										</label>
+										<label for="div-quarterly" title="Quarterly">
+											<input type="radio" id="div-quarterly" name="division" class="divbutton" onclick="updateDivisionType('Quarterly')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Quarterly"/></svg>
+										</label>
+										<label for="div-gyronny" title="Gyronny">
+											<input type="radio" id="div-gyronny" name="division" class="divbutton" onclick="updateDivisionType('Gyronny')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Gyronny"/></svg>
+										</label>
+										<label for="div-paly" title="Paly">
+											<input type="radio" id="div-paly" name="division" class="divbutton" onclick="updateDivisionType('Paly')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Paly"/></svg>
+										</label>
+										<label for="div-barry" title="Barry">
+											<input type="radio" id="div-barry" name="division" class="divbutton" onclick="updateDivisionType('Barry')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Barry"/></svg>
+										</label>
+										<label for="div-bendy" title="Bendy">
+											<input type="radio" id="div-bendy" name="division" class="divbutton" onclick="updateDivisionType('Bendy')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Bendy"/></svg>
+										</label>
+										<label for="div-bendys" title="Bendy sinister">
+											<input type="radio" id="div-bendys" name="division" class="divbutton" onclick="updateDivisionType('BendyS')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#BendyS"/></svg>
+										</label>
+										<label for="div-chevronny" title="Chevronny">
+											<input type="radio" id="div-chevronny" name="division" class="divbutton" onclick="updateDivisionType('Chevronny')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Chevronny"/></svg>
+										</label>
+										<label for="div-chequy" title="Chequy">
+											<input type="radio" id="div-chequy" name="division" class="divbutton" onclick="updateDivisionType('Chequy')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Chequy"/></svg>
+										</label>
+										<label for="div-lozengy" title="Lozengy">
+											<input type="radio" id="div-lozengy" name="division" class="divbutton" onclick="updateDivisionType('Lozengy')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Lozengy"/></svg>
+										</label>
+										<label for="div-pily" title="Pily">
+											<input type="radio" id="div-pily" name="division" class="divbutton" onclick="updateDivisionType('Pily')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Pily"/></svg>
+										</label>
+										<div class="number-input" id="editor-div-count">
+											<label for="div-count"><b>Subdivisions (4-8):</b></label>
+											<input type="number" id="div-count" name="quantity" min="4" max="8" step="1" value="6" onchange="updateDivisionCount()"> 
+										</div>
+									</div>
+									<div id="editor-division-color">
+										<h3>Division Color</h3>
+									</div>
+									<div id="editor-division-color-2">
+										<h3>Division Color 2</h3>
+									</div>
+									
+								</div>
+									
+								<div id="ordinary-tab" class="w3-container tab" style="display:none">
+									<div>
+										<h3>Ordinary Type</h3>
+										<label for="ord-none" title="None">
+											<input type="radio" id="ord-none" name="division" class="divbutton" onclick="updateOrdinaryType('none')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#nodiv"/></svg>
+										</label>
+										<label for="ord-pale" title="Pale">
+											<input type="radio" id="ord-pale" name="division" class="divbutton" onclick="updateOrdinaryType('Pale')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Pale"/></svg>
+										</label>
+										<label for="ord-fess" title="Fess">
+											<input type="radio" id="ord-fess" name="division" class="divbutton" onclick="updateOrdinaryType('Fess')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Fess"/></svg>
+										</label>
+										<label for="ord-crossf" title="Cross (Fixed width to keep symmetry in diagonal field divisions)">
+											<input type="radio" id="ord-crossf" name="division" class="divbutton" onclick="updateOrdinaryType('CrossFixed')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#CrossFixed"/></svg>
+										</label>
+										<label for="ord-cross" title="Cross">
+											<input type="radio" id="ord-cross" name="division" class="divbutton" onclick="updateOrdinaryType('Cross')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Cross"/></svg>
+										</label>
+										<label for="ord-bend" title="Bend">
+											<input type="radio" id="ord-bend" name="division" class="divbutton" onclick="updateOrdinaryType('Bend')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Bend"/></svg>
+										</label>
+										<label for="ord-bends" title="Bend Sinister">
+											<input type="radio" id="ord-bends" name="division" class="divbutton" onclick="updateOrdinaryType('BendS')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#BendS"/></svg>
+										</label>
+										<label for="ord-chevron" title="Chevron">
+											<input type="radio" id="ord-chevron" name="division" class="divbutton" onclick="updateOrdinaryType('Chevron')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Chevron"/></svg>
+										</label>
+										<label for="ord-saltire" title="Saltire">
+											<input type="radio" id="ord-saltire" name="division" class="divbutton" onclick="updateOrdinaryType('Saltire')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Saltire"/></svg>
+										</label>
+										<label for="ord-pall" title="Pall">
+											<input type="radio" id="ord-pall" name="division" class="divbutton" onclick="updateOrdinaryType('Pall')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Pall"/></svg>
+										</label>
+										<label for="ord-pile" title="Pile">
+											<input type="radio" id="ord-pile" name="division" class="divbutton" onclick="updateOrdinaryType('Pile')">
+											<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Pile"/></svg>
+										</label>
+										<div class="number-input" id="editor-ordinary-width">
+											<label for="ord-width"><b>Width (50-100):</b></label>
+											<input type="number" id="ord-width" name="quantity" min="50" max="100" step="5" value="80" onchange="updateOrdinaryWidth()"> 
+										</div>
+									</div>
+									<div id="editor-ordinary-color">
+										<h3>Ordinary Color</h3>
+									</div>
+								</div>
+
+								<div id="charges-tab" class="w3-container tab" style="display:none">
+									<div>
+										<div class="w3-row">
+											<div class="w3-quarter">
+												<h3>Charge List</h3>
+												<ul id="charges-list" class="w3-ul w3-hoverable">
+													<li class="w3-display-container">Jill
+														<span onclick="deleteCharge(i)"
+														class="w3-button w3-display-right">&times;</span>
+													</li>
+													<li class="w3-display-container">Jill
+														<span onclick="this.parentElement.style.display='none'"
+														class="w3-button w3-display-right">&times;</span>
+													</li>
+													<li class="w3-display-container">Jill
+														<span onclick="this.parentElement.style.display='none'"
+														class="w3-button w3-display-right">&times;</span>
+													</li>
+												</ul>
+												<div id="add-charge" class="w3-button" onclick="addCharge()">Add Charge</div>
+											</div>
+											<div class="w3-threequarter w3-container">
+												<div id="editor-charge-type">
+													<h3>Charge Type</h3>
+													<label for="cha-circle" title="Circle">
+														<input type="radio" id="cha-circle" name="charge" class="divbutton" onclick="updateChargeType('Circle')">
+														<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Saltire"/></svg>
+													</label>
+													<label for="cha-diamond" title="Diamond">
+														<input type="radio" id="cha-diamond" name="charge" class="divbutton" onclick="updateChargeType('Diamond')">
+														<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Saltire"/></svg>
+													</label>
+													<label for="cha-fleur" title="Fleur-De-Lys">
+														<input type="radio" id="cha-fleur" name="charge" class="divbutton" onclick="updateChargeType('Fleur-De-Lis')">
+														<svg viewBox="0 0 600 750" width="60" height="60"><use xlink:href="#Saltire"/></svg>
+													</label>
+												</div>
+												<div id="editor-charge-position">
+													<h3>Charge Position</h3>
+													<table id="editor-charge-position-buttons">
+														<tr>
+															<td rowspan="2"><button class="w3-button" onclick="updateChargePosition([0,-1])">Left</button></td>
+															<td colspan="3"><button class="w3-button" onclick="updateChargePosition([-1,0])">Up</button></td>
+															<td rowspan="2"><button class="w3-button" onclick="updateChargePosition([0,1])">Right</button></td>
+														</tr>
+														<tr>
+															<td><button class="w3-button" onclick="updateChargePosition([1,0])">Down</button></td>
+														</tr>
+													</table>
+												</div>
+												<div id="editor-charge-color">
+													<h3>Charge Color</h3>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Heraldry Colors -->
+			<div class="w3-panel">
+				<div class="w3-row" style="line-height: 0;">
+					<svg viewBox="0 0 750 40" fill="url(#battlements)">
+						<rect x="0" y="0" width="800" height="50" />
+					</svg>
+				</div>
+				<div class="w3-row shadow2" style="background-color: #ffccaa; padding: 20px 0 20px 0;">
+					
+					<!-- 9x9 Color Grid -->
+					<div class="w3-container w3-twothird">
+						<div class="w3-row">
+							<div class="w3-container w3-third">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#Argent"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Argent (silver)</p>
+								</div>
+							</div>
+							<div class="w3-container w3-third">
+								<svg viewBox="0 0 600 720" fill="#ffc800"><use xlink:href="#Or"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Or (gold)</p>
+								</div>
+							</div>
+							<div class="w3-container w3-third">
+								<svg viewBox="0 0 600 720" fill="#c83737"><use xlink:href="#Gules"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Glues (red)</p>
+								</div>
+							</div>
+						</div>
+						<hr class="w3-hide-small">
+						<div class="w3-row">
+							<div class="w3-container w3-third">
+								<svg viewBox="0 0 600 720" fill="#3771c8"><use xlink:href="#Azure"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Azure (blue)</p>
+								</div>
+							</div>
+							<div class="w3-container w3-third">
+								<svg viewBox="0 0 600 720" fill="#2ca02c"><use xlink:href="#Vert"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Vert (green)</p>
+								</div>
+							</div>
+							<div class="w3-container w3-third">
+								<svg viewBox="0 0 600 720" fill="#8d5fd3"><use xlink:href="#Purpure"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Purpure (purple)</p>
+								</div>
+							</div>
+						</div>
+						<hr class="w3-hide-small">
+						<div class="w3-row">
+							<div class="w3-container w3-third">
+								<svg viewBox="0 0 600 720" fill="#323232"><use xlink:href="#Sable"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Sable (black)</p>
+								</div>
+							</div>
+							<div class="w3-container w3-third">
+								<svg viewBox="0 0 600 720" fill="#ff7f2a"><use xlink:href="#Tenny"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Tenny (tawny orange)</p>
+								</div>
+							</div>
+							<div class="w3-container w3-third">
+								<svg viewBox="0 0 600 720" fill="#a05a2c"><use xlink:href="#Brown"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Brown (Gules + Vert)</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="w3-container w3-third scroll">
+						<div class="w3-card w3-white">
+							<header class="w3-container">
+								<h2>Colors and Metals</h2>
+							</header>
+							  
+							<div class="w3-container">
+								<p>There are five main colours in heraldry (although this differs slightly from nation to nation): red, blue, black, green and purple. Some mixed colours, known as stains are also sometimes used. The two metals - gold and silver - are usually depicted as yellow and white.</p>
+								<p>In British heraldry Norman French names are used for colours and metals, though gold and silver are also used instead of "Or" and "Argent".</p>
+								<h4>The Rule of Tinctures</h4>
+								<p>An important heraldic principle governs the use of colours and metals: "Never place a colour on a colour or a metal on a metal". It is a very sensible rule, remembering that the original purpose of heraldry was the quick and ready identification on the battlefield. Life could depend on it. A blue charge on a black field, for exampe, or a gold on silver, would be difficult to distinguish in the melée of medieval warfare.</p>
+								<p>However, as long as the charge lies partly on an opposite - such as a red lion on a field of gold and blue - this does not constitute a breaking of the rule.</p>
+
+								<p><span class="w3-tooltip w3-text-brown"><b>Or</b> <span class="w3-text w3-tag w3-brown w3-round-small">Gold</span></span></p>
+							</div>
+							  
+							<footer class="w3-container" style="height: 10px;">
+							</footer>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Heraldry Divisions -->
+			<div class="w3-panel">
+				<div class="w3-row" style="line-height: 0;">
+					<svg viewBox="0 0 750 40" fill="url(#battlements)">
+						<rect x="0" y="0" width="800" height="50" />
+					</svg>
+				</div>
+				<div class="w3-row shadow2" style="background-color: #ffccaa; padding: 20px 0 20px 0;">
+					<div class="w3-container">
+						<div class="w3-row w3-center" style="margin: 10px;">
+							<div class="banner shadowM">
+								<h2>Shield Divisions</h2>
+							</div>
+						</div>
+						<div class="w3-row">
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#PartyPale"/></svg>
+								<div class="w3-container w3-center label">
+									<p>(Party) per pale</p>
+								</div>
+							</div>
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#PartyFess"/></svg>
+								<div class="w3-container w3-center label">
+									<p>(Party) per fess</p>
+								</div>
+							</div>
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#PartyBend"/></svg>
+								<div class="w3-container w3-center label">
+									<p>(Party) per bend</p>
+								</div>
+							</div>
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#PartyBendS"/></svg>
+								<div class="w3-container w3-center label">
+									<p>(Party) per bend sinister</p>
+								</div>
+							</div>
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#PartyChevron"/></svg>
+								<div class="w3-container w3-center label">
+									<p>(Party) per chevron</p>
+								</div>
+							</div>
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#PartySaltire"/></svg>
+								<div class="w3-container w3-center label">
+									<p>(Party) per saltire</p>
+								</div>
+							</div>
+						</div>
+						<hr class="w3-hide-small">
+						<div class="w3-row">
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#TiercedPale"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Tierced per pale</p>
+								</div>
+							</div>
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#TiercedFess"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Tierced per fess</p>
+								</div>
+							</div>
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#Quarterly"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Quarterly</p>
+								</div>
+							</div>
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#Gyronny"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Gyronny</p>
+								</div>
+							</div>
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#Paly"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Paly (six)</p>
+								</div>
+							</div>
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#Barry"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Barry (six)</p>
+								</div>
+							</div>
+						</div>
+						<hr class="w3-hide-small">
+						<div class="w3-row">
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#Bendy"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Bendy</p>
+								</div>
+							</div>
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#BendyS"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Bendy sinister</p>
+								</div>
+							</div>
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#Chevronny"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Chevronny</p>
+								</div>
+							</div>
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#Chequy"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Chequy</p>
+								</div>
+							</div>
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#Lozengy"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Lozengy</p>
+								</div>
+							</div>
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#Pily"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Pily</p>
+								</div>
+							</div>
+							<!-- <div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#BarryBendy"/></svg>
+								<div class="w3-container w3-center">
+									<p>Barry bendy</p>
+								</div>
+							</div>
+						</div>
+						<div class="w3-row">
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#PalyBendy"/></svg>
+								<div class="w3-container w3-center">
+									<p>Paly bendy</p>
+								</div>
+							</div>
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#Gyronny12"/></svg>
+								<div class="w3-container w3-center">
+									<p>Gyronny of twelve</p>
+								</div>
+							</div> -->
+							
+							<!-- <div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#PilyBendy"/></svg>
+								<div class="w3-container w3-center">
+									<p>Pily bendy</p>
+								</div>
+							</div>
+							<div class="w3-col m2 w3-center">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#PilyBendyS"/></svg>
+								<div class="w3-container w3-center">
+									<p>Pily bendy sinister</p>
+								</div>
+							</div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Shield Types -->
+			<div class="w3-panel">
+				<div class="w3-row" style="line-height: 0;">
+					<svg viewBox="0 0 750 40" fill="url(#battlements)">
+						<rect x="0" y="0" width="800" height="50" />
+					</svg>
+				</div>
+				<div class="w3-row shadow2" style="background-color: #ffccaa; padding: 20px 0 20px 0;">
+					<div class="w3-container w3-third scroll">
+						<div class="w3-card w3-white">
+							<header class="w3-container">
+								<h2>Shield Types</h2>
+							</header>
+							  
+							<div class="w3-container">
+								<p>Lorem ipsum <span class="w3-tooltip w3-text-brown"><b>Or</b> <span class="w3-text w3-tag w3-brown w3-round-small">Gold</span></span> dolor sit amet, consectetur adipisicing elit. Id doloremque consectetur ea amet illo sunt maxime ipsum! Aut voluptatibus cumque praesentium numquam porro excepturi nulla enim, sunt maxime! Vel, libero!</p>
+								<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas quaerat cumque similique ad quos eaque dicta. Cum quos accusamus inventore, pariatur iure dolore, repellendus saepe cupiditate corporis voluptatibus culpa ducimus?</p>
+								<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos necessitatibus, enim dolorem explicabo accusantium ipsum sit qui minima nesciunt voluptates commodi ut perferendis ducimus ratione veniam dolorum libero alias. Quas.</p>
+							</div>
+							  
+							<footer class="w3-container" style="height: 10px;">
+							</footer>
+						</div>
+					</div>
+					<div class="w3-container w3-twothird">
+						<div class="w3-row">
+							<div class="w3-container w3-quarter">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#shieldStandard"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Standard</p>
+								</div>
+							</div>
+							<div class="w3-container w3-quarter">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#shieldHeater"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Heater</p>
+								</div>
+							</div>
+							<div class="w3-container w3-quarter">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#shieldTriangle"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Triangle</p>
+								</div>
+							</div>
+							<div class="w3-container w3-quarter">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#shieldTriangle2"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Triangle 2</p>
+								</div>
+							</div>
+						</div>
+						<hr class="w3-hide-small">
+						<div class="w3-row">
+							<div class="w3-container w3-quarter">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#shieldTriangle3"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Triangle 3</p>
+								</div>
+							</div>
+							<div class="w3-container w3-quarter">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#shieldRound"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Round</p>
+								</div>
+							</div>
+							<div class="w3-container w3-quarter">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#shieldOldFrench"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Old French</p>
+								</div>
+							</div>
+							<div class="w3-container w3-quarter">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#shieldEnglish"/></svg>
+								<div class="w3-container w3-center label">
+									<p>English</p>
+								</div>
+							</div>
+						</div>
+						<hr class="w3-hide-small">
+						<div class="w3-row">
+							<div class="w3-container w3-quarter">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#shieldRenaissance"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Renaissance</p>
+								</div>
+							</div>
+							<div class="w3-container w3-quarter">
+								<svg viewBox="0 0 600 750" fill="#e6e6e6"><use xlink:href="#shieldOval"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Oval</p>
+								</div>
+							</div>
+							<div class="w3-container w3-quarter">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#shieldLozenge"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Lozenge (for women)</p>
+								</div>
+							</div>
+							<div class="w3-container w3-quarter">
+								<svg viewBox="0 0 600 720" fill="#e6e6e6"><use xlink:href="#shieldSquare"/></svg>
+								<div class="w3-container w3-center label">
+									<p>Square</p>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+
+			<!-- Sources -->
+			<div class="w3-panel">
+				<div class="w3-row" style="line-height: 0;">
+					<svg viewBox="0 0 750 40" fill="url(#battlements)">
+						<rect x="0" y="0" width="800" height="50" />
+					</svg>
+				</div>
+				<div class="w3-row shadow2" style="background-color: #ffccaa; padding: 20px 0 20px 0;">
+					<div class="w3-container">
+						<div class="w3-row w3-center" style="margin: 10px;">
+							<div class="banner shadowM">
+								<h2>Sources</h2>
+							</div>
+						</div>
+						<div class="w3-row">
+							<p>Stephen Slater. <i><b>The History and Meaning of Heraldry: an Illustrated Reference to Classic Symbols and Their Relevance</b></i>. Southwater, 2004.</p>
+							<p>Terence Wise, Richard Hook. <i><b>Medieval Heraldry</b></i>. Osprey Publishing, 1980.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		<!-- End Content -->
+		</div>
+		
+		<script src="heraldry.js" async defer></script>
+	</body>
+</html>
